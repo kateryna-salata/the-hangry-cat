@@ -1,1 +1,40 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The hangry cat</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div id="game-intro">
+      
+      <h1>THE HANGRY CAT</h1>
+      <div id="wrapper-intro">
+        <h2>Instructions</h2>
+        <p>Use the left and right arrow to control the cat</p>
+        <p>Don't eat the garbage and plants</p>
+        <p>Catch the yarn to start the game</p>
+        <p>*If you are not a real cat you can press TAB + ENTER*</p>
+      </div>
+      <button id="start-button">Start <br /> game</button>
+    </div>
+    <div id="game-container">
+      <div id="game-stats">
+        <p id="score-text">Score: <span id="score">0</span></p>
+        <p id="lives-text">Lives: <span id="lives">9</span></p>
+      </div>
+      <div id="game-screen"></div>
+    </div>
+    <div id="game-end">
+      <h3>Game Over</h3>  
+      <img id="win-img" src="" alt="win image" />
+      <button id="restart-button">Restart</button>
+    </div>
+    <script src="./src/player.js"></script>
+    <script src="./src/food.js"></script>
+    <script src="./src/obstacle.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/script.js"></script>
+  </body>
+</html>

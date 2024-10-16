@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+  font-size: 30px;
+  background-color: rgba(226, 169, 12, 0.9);
+}
+
+#game-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+#wrapper-intro {
+  background-color: rgba(255, 192, 203, 0.6);
+  width: 40%;
+  margin-top: 50px;
+  align-self: center;
+  padding: 20px 50px 50px 50px;
+  border: 1px solid black;
+}
+
+#start-button {
+  border-radius: 50%;
+  font-size: 35px;
+  padding: 50px;
+  border: none;
+  background-image: url(../img/yarn.jpg);
+  background-position: 10%;
+  color: whitesmoke;
+  position: absolute;
+  white-space: nowrap;
+}
+
+#game-container {
+  display: flex;
+  justify-content: center;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(255, 192, 203, 0.6);
+  /* background-image: url(../images/road.png);
+  background-size: cover; */
+  margin-top: 50px;
+  border: 1px solid black;
+}
+
+#game-end {
+  display: none;
+}
+
+#score-text, #lives-text {
+  display: none;
+  margin-top: 50px;
+  margin-right: 10px;
+}
+
+/* animation: spin 0.5s linear  */
