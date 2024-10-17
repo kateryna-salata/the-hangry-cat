@@ -8,7 +8,7 @@ class Game {
     this.scoreTextElement = document.getElementById("score-text");
     this.livesTextElement = document.getElementById("lives-text");
     this.timerElement = document.getElementById("timeRemaining");
-    this.player = new Player(this.gameScreen, 700, 690, 140, 150, "../img/pipka.png");
+    this.player = new Player(this.gameScreen, 700, 690, 140, 150, "img/pipka.png");
     this.height = 800;
     this.width = 800;
     this.obstacles = [];
@@ -23,8 +23,8 @@ class Game {
     this.gameDuration = 120; // Timer duration in seconds
     this.timeRemaining = this.gameDuration;
     this.timer = null;
-    this.meow = new Audio('../sounds/angry.m4a');
-    this.purr = new Audio('../sounds/purr.wav')
+    this.meow = new Audio('sounds/angry.m4a');
+    this.purr = new Audio('sounds/purr.wav')
   }
 
   start(){
