@@ -1,12 +1,13 @@
 class Game {
   constructor() {
-    this.startScreen = document.querySelector("#game-intro");
-    this.gameScreen = document.querySelector("#game-screen");
+    this.startScreen = document.getElementById("game-intro");
+    this.gameScreen = document.getElementById("game-screen");
     this.endScreen = document.getElementById("game-end");
     this.scoreElement = document.getElementById("score");
     this.livesElement = document.getElementById("lives");
     this.scoreTextElement = document.getElementById("score-text");
     this.livesTextElement = document.getElementById("lives-text");
+    this.timerElement = document.getElementById("timeRemaining");
     this.player = new Player(this.gameScreen, 700, 690, 140, 150, "../img/pipka.webp");
     this.height = 800;
     this.width = 800;
@@ -19,22 +20,48 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000/60;
     this.counter = 0;
+    this.gameDuration = 120; // Timer duration in seconds
+    this.timeRemaining = this.gameDuration;
+    this.timer = null;
+    this.meow = new Audio('../sounds/angry.m4a');
+    this.purr = new Audio('../sounds/purr.wav')
   }
 
   start(){
-        // Set the height and width of the game screen
-        this.gameScreen.style.height = `${this.height}px`;
-        this.gameScreen.style.width = `${this.width}px`;
-    
-        this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "block";
-        this.scoreTextElement.style.display = "block";
-        this.livesTextElement.style.display = "block";
-    
-        // Runs the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
-        this.gameIntervalId = setInterval(() => {
-          this.gameLoop()
-        }, this.gameLoopFrequency)
+    // Set the height and width of the game screen
+    this.gameScreen.style.height = `${this.height}px`;
+    this.gameScreen.style.width = `${this.width}px`;
+
+    this.startScreen.style.display = "none";
+    this.gameScreen.style.display = "block";
+    this.scoreTextElement.style.display = "block";
+    this.livesTextElement.style.display = "block";
+    this.timerElement.style.display = "block";
+
+    // Runs the gameLoop on a fequency of 60 times per second. Also stores the ID of the interval.
+    this.gameIntervalId = setInterval(() => {
+      this.gameLoop()
+    }, this.gameLoopFrequency)
+
+    // start timer
+    this.startTimer();
+  }
+
+  startTimer() {
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      this.timeRemaining--;
+      
+      // Format the time as MM:SS
+      const minutes = Math.floor(this.timeRemaining / 60).toString().padStart(2, '0');
+      const seconds = (this.timeRemaining % 60).toString().padStart(2, '0');
+      this.timerElement.innerText = `${minutes}:${seconds}`;
+      
+      if (this.timeRemaining <= 0) {
+        clearInterval(this.timer);
+        this.endGame();
+      }
+    }, 1000);
   }
 
   spawnObstacles() {
@@ -78,6 +105,8 @@ class Game {
         i--;
         //update score
         this.scoreElement.textContent = this.score;
+        //sound
+        this.purr.play();
       }
     }
 
@@ -96,6 +125,9 @@ class Game {
         i--;
         //update lives
         this.livesElement.textContent = this.lives;
+
+        //sound
+        this.meow.play();
       }
     }
 
@@ -106,14 +138,20 @@ class Game {
   }
 
   endGame() {
-    this.player.element.remove();
-    this.obstacles.forEach(obstacle => obstacle.element.remove());
+
 
     this.gameIsOver = true;
 
     // Hide game screen
     this.gameScreen.style.display = "none";
     // Show end game screen
-    this.gameEndScreen.style.display = "block";
+    this.endScreen.style.display = "block";
+    //Hides timer
+    this.timerElement.style.display = "none";
+
+    this.player.element.remove();
+    this.obstacles.forEach(obstacle => obstacle.element.remove());
+    this.food.forEach(food => food.element.remove());
+
   }
 }
