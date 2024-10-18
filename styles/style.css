@@ -34,6 +34,7 @@ body {
   color: whitesmoke;
   position: absolute;
   white-space: nowrap;
+  /* animation:0.5s spin  linear infinite; */
 }
 
 #game-container {
@@ -41,7 +42,15 @@ body {
   justify-content: center;
 }
 
-#game-screen {
+#wrapper-game-end {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#game-screen, #game-end {
   display: none;
   align-content: center;
   padding: 20px 0px;
@@ -54,11 +63,11 @@ body {
   border: 1px solid black;
 }
 
+
 #game-end {
-  display: none;
-  /* background-color: rgba(255, 192, 203, 0.6);
-  width: 40%;
-  height: 600px; */
+  /* display: none; */
+  flex-direction: column; /* Set the desired flex direction */
+  align-items: center;
 }
 
 #score-text, #lives-text, #timeRemaining {
@@ -74,6 +83,7 @@ body {
   border: 1px solid black;
   background-color: rgba(226, 169, 12, 0.9);
   color: black;
+  width: 150px;
 }
 
 /* animation: spin 0.5s linear  */

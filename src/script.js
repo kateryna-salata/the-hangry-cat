@@ -10,7 +10,7 @@ window.onload = function () {
     startButton.style.top = `${y}px`; 
   }
 
-  // startButton.addEventListener('mouseenter', moveStartButton); 
+  startButton.addEventListener('mouseenter', moveStartButton); 
   startButton.addEventListener("click", function () {
     startGame();
   });
@@ -70,4 +70,5 @@ window.onload = function () {
   function restartGame() {
     location.reload();
   }
+  //.volume = 0.1
 }

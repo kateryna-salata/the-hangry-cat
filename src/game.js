@@ -142,12 +142,14 @@ class Game {
 
     this.gameIsOver = true;
 
-    // Hide game screen
-    this.gameScreen.style.display = "none";
+
     // Show end game screen
-    this.endScreen.style.display = "block";
-    //Hides timer
+    this.endScreen.style.display = "flex";
+    //Hides 
+    this.gameScreen.style.display = "none";
     this.timerElement.style.display = "none";
+    this.livesTextElement.style.display = "none";
+    this.scoreTextElement.style.display = "none";
 
     this.player.element.remove();
     this.obstacles.forEach(obstacle => obstacle.element.remove());
