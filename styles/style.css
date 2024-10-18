@@ -24,6 +24,15 @@ body {
   border: 1px solid black;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #start-button {
   border-radius: 50%;
   font-size: 25px;
@@ -34,6 +43,7 @@ body {
   color: whitesmoke;
   position: absolute;
   white-space: nowrap;
+  animation: spin 5s linear infinite;
   /* animation:0.5s spin  linear infinite; */
 }
 
@@ -65,8 +75,7 @@ body {
 
 
 #game-end {
-  /* display: none; */
-  flex-direction: column; /* Set the desired flex direction */
+  flex-direction: column;
   align-items: center;
 }
 
@@ -86,4 +95,6 @@ body {
   width: 150px;
 }
 
-/* animation: spin 0.5s linear  */
+#end-img {
+  margin: 20px;
+}

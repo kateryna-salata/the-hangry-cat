@@ -8,6 +8,8 @@ class Game {
     this.scoreTextElement = document.getElementById("score-text");
     this.livesTextElement = document.getElementById("lives-text");
     this.timerElement = document.getElementById("timeRemaining");
+    this.endTextElement = document.getElementById("end-text");
+    this.endImgElement = document.getElementById("end-img");
     this.player = new Player(this.gameScreen, 700, 690, 140, 150, "img/pipka.png");
     this.height = 800;
     this.width = 800;
@@ -20,7 +22,7 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000/60;
     this.counter = 0;
-    this.gameDuration = 120; // Timer duration in seconds
+    this.gameDuration = 33; // Timer duration in seconds
     this.timeRemaining = this.gameDuration;
     this.timer = null;
     this.meow = new Audio('sounds/angry.m4a');
@@ -93,7 +95,6 @@ class Game {
 
   update() {
     this.player.move();
-
     for (let i = 0; i < this.foodItems.length; i++) {
       const foodItem = this.foodItems[i];
       foodItem.move();
@@ -134,14 +135,21 @@ class Game {
     if (this.lives === 0) {
       this.endGame();
     }
-
   }
 
   endGame() {
-
+    //lose/win situation
+    if (this.lives === 0) {
+      this.endTextElement.innerText = `Your score is ${this.score}. Do a better job, I have just 9 lives`;
+      this.endImgElement.src = "img/lose.png";
+      
+    } else {
+      this.endTextElement.innerText = `Your score is ${this.score}. Good job!`;
+      this.endImgElement.src = "img/win.png";
+      this.endImgElement.style.animation = `spin 5s linear infinite`;
+    }
 
     this.gameIsOver = true;
-
 
     // Show end game screen
     this.endScreen.style.display = "flex";
@@ -153,7 +161,5 @@ class Game {
 
     this.player.element.remove();
     this.obstacles.forEach(obstacle => obstacle.element.remove());
-    this.food.forEach(food => food.element.remove());
-
   }
 }
