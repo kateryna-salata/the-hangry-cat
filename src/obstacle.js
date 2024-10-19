@@ -7,7 +7,7 @@ class Obstacle {
       this.height = 70;
       this.element = document.createElement("img");
   
-      this.element.src = `./obstacle-img/${Math.round(Math.random() * (4 - 1) + 1)}.png`;
+      this.element.src = `./obstacle-img/${Math.round(Math.random() * (5 - 1) + 1)}.png`;
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
