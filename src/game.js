@@ -22,7 +22,7 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000/60;
     this.counter = 0;
-    this.gameDuration = 33; // Timer duration in seconds
+    this.gameDuration = 120; // Timer duration in seconds
     this.timeRemaining = this.gameDuration;
     this.timer = null;
     this.meow = new Audio('sounds/angry.m4a');
