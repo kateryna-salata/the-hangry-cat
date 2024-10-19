@@ -26,7 +26,11 @@ class Game {
     this.timeRemaining = this.gameDuration;
     this.timer = null;
     this.meow = new Audio('sounds/angry.m4a');
-    this.purr = new Audio('sounds/purr.wav')
+    this.meow.volume = 0.1;
+    this.purr = new Audio('sounds/purr.wav');
+    this.purr.volume = 0.2; 
+    this.song = new Audio('sounds/game.wav');
+    this.song.volume = 0.005; 
   }
 
   start(){
@@ -86,6 +90,7 @@ class Game {
     this.update();
     this.spawnObstacles();
     this.spawnFood();
+    this.song.play();
     // If "gameIsOver" is set to "true" clear the interval to stop the loop
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
@@ -138,6 +143,8 @@ class Game {
   }
 
   endGame() {
+    this.song.pause();      // This pauses the audio
+    this.song.currentTime = 0;
     //lose/win situation
     if (this.lives === 0) {
       this.endTextElement.innerText = `Your score is ${this.score}. Do a better job, I have just 9 lives`;
